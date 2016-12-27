@@ -143,6 +143,22 @@ const tags = [
   "xmp"
 ]
 
+console.log(`import h from "../snabbdom/h"`)
+console.log(`
+const dom = tag => (...args) => {
+  // selector argument is optional, so first argument could be either be the selector or something else
+  if (typeof args[0] === 'string') {
+    args[0] = tag + args[0]
+  }
+  else {
+    args.shift(tag)
+  }
+  return h(...args)
+}`)
+
 tags.forEach(t => {
-  console.log(`export const ${t} = node(${t})`)
+  // we can't export `var` because it's a reserved word
+  // so we export `variable` instead
+  let exportName = t === 'var' ? 'variable' : t
+  console.log(`export const ${exportName} = dom('${t}')`)
 })

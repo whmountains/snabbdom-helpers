@@ -11,7 +11,8 @@
     "watch": "npm-run-all --parallel watch:build watch:test watch:lint",
     "watch:build": "chokidar './src/' --initial --command 'npm run build --silent'",
     "watch:test": "chokidar './src/' --initial --command 'npm run test --silent'",
-    "watch:lint": "chokidar './src/' --initial --command 'npm run lint --silent'"
+    "watch:lint": "chokidar './src/' --initial --command 'npm run lint --silent'",
+    "generate": "node generate.js > helpers.js"
   },
   "repository": {
     "type": "git",
